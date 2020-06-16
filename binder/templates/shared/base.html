@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Binder Note Manager</title>
+
+    {% block css %}
+    {% endblock %}
+    
+</head>
+
+<body>
+
+    <nav id="navContainer">
+        <div id="navLinkContainer">
+            {% if user.is_authenticated %}
+                <a class="navLink" href="{% url 'binder:logout' %}">Log Out</a>
+            {% else %}
+                <a class="navLink" href="{% url 'binder:login' %}">Log In</a>
+            {% endif %}    
+            
+        </div>
+    </nav>
+
+    <div id="mainContainer" >
+        {% block content %}
+        {% endblock %}
+
+        {% block scripts %}
+        {% endblock scripts %}
+
+    </div>  
+
+</body>
+
+</html>
