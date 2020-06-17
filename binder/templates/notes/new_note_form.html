@@ -1,0 +1,26 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="greyBackground">
+<section id="creationForm">
+<h1>Make a New Note</h1>
+
+<form action="{% url 'binder:new_note' %}" method="post">
+    {% csrf_token %}
+  <fieldset>
+      <input id="season" type="text" name="season" placeholder="Season" required>
+  </fieldset>
+  <fieldset>
+      <input id="class" type="text" name="class" placeholder="Class" required>
+  </fieldset>
+  <fieldset>
+      <input id="note" type="text" name="note" placeholder="Name of Note" required>
+  </fieldset>
+  <button type="submit">Let's get to writing!</button>
+</form>
+{% comment %} <a href="{% url 'binder:login' %}">Already have an account?  Login here!</a> {% endcomment %}
+</section>
+</div>
+{% endblock content %}

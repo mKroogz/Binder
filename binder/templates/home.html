@@ -3,7 +3,11 @@
 {% block content %}
 
 <div id="container">
-    <p> This is a placeholder home page </p>
+     <form>
+        <button formaction="{% url 'binder:new_note' %}">Make New Note</button>
+    </form>
+    <h1>Welcome to Binder</h1>
+    <h3>All your notes in one place</h3>
 </div>
 
 {% endblock content %}
