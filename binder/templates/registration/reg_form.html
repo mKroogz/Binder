@@ -1,0 +1,37 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="greyBackground">
+<section id="creationForm">
+<h1>Sign up for Binder</h1>
+
+<form action="{% url 'binder:reg_form' %}" method="post">
+    {% csrf_token %}
+  <fieldset>
+      <label for="first_name">First Name: </label>
+      <input id="first_name" type="text" name="first_name" required>
+  </fieldset>
+  <fieldset>
+      <label for="last_name">Last Name: </label>
+      <input id="last_name" type="text" name="last_name" required>
+  </fieldset>
+  <fieldset>
+      <label for="username">Username: </label>
+      <input id="username" type="text" name="username" required>
+  </fieldset>
+  <fieldset>
+      <label for="password">Password: </label>
+      <input id="password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+  </fieldset>
+  <fieldset>
+      <label for="email">Email: </label>
+      <input id="email" type="email" name="email" required>
+  </fieldset>
+  <button type="submit">Register</button>
+</form>
+<a href="{% url 'binder:login' %}">Already have an account?  Login here!</a>
+</section>
+</div>
+{% endblock content %}
