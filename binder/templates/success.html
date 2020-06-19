@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div id="container">
+    <h3>Your note was successfully added!</h3>
+     <form>
+        <button formaction="{% url 'binder:home' %}">Awesome!</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div id="greyBackground">
+    <section id="creationForm">
+    {% if season %}
+    <h1>Almost Done</h1>
+        <form action="{% url 'binder:existing_note_pt2' season %}" method="post">
+    {% else %}
+    <h1>First Which Season?</h1>
+        <form action="{% url 'binder:existing_note' %}" method="post">
+    {% endif %}
+        {% csrf_token %}
+      {% if season %}
+      <fieldset>
+          <label for="class">Class: </label>
+            <select id="class_id" type="text" name="class_id" required>
+                {% for class in all_classes %}
+                    <option value="{{ class.id }}">{{ class.name }}</option>
+                {% endfor %}
+            </select>
+      </fieldset>
+      <fieldset>
+          <label for="note">Name of Note: </label>
+          <input id="note" type="text" name="note" required>
+      </fieldset>
+      {% else %}
+      <fieldset>
+          <label for="season">What Season? </label>
+            <select id="season_id" type="text" name="season_id" required>
+                {% for season in all_seasons %}
+                    <option value="{{ season.id }}">{{ season.name }}</option>
+                {% endfor %}
+            </select>
+      </fieldset>
+      {% endif %}
+      <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'binder:new_note' %}">Want a brand new note instead?  Click here!</a>
+</section>
+</div>
+{% endblock content %}

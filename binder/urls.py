@@ -7,7 +7,11 @@ app_name = 'binder'
 urlpatterns = [
     path('', home, name='home'),
     path('home/', home, name='home'),
+    path('fail/', fail, name='fail'),
+    path('success/', success, name='success'),
     path('newnote/', new_note, name='new_note'),
+    path('existingnote/', existing_note, name='existing_note'),
+    path('existingnote/<int:season>', existing_note_pt2, name='existing_note_pt2'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_user, name='logout'),
     path('login/', include('django.contrib.auth.urls'), name='login'),
