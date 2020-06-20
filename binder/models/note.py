@@ -19,5 +19,5 @@ class Note(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-    # def get_absolute_url(self):
-    #     return reverse("note_detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("success", kwargs={"pk": self.pk})

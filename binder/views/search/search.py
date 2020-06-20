@@ -35,13 +35,10 @@ def get_classes(user):
 
 def get_matches(dataset, search):
     all_matches = []
-    for row in dataset:
-        match = Note()
-        match.id = row['id']
-        match.name = row['name']
-        if match.name.upper() == search.upper() or match.manufacturer.upper() == search.upper():
+    for match in dataset:
+        if search.upper() in match.name.upper():
             all_matches.append(match)
-        elif search == "":
+        elif search == "showall":
             all_matches.append(match)
     
     return all_matches
@@ -56,6 +53,8 @@ def get_search(request):
     elif request.method == 'POST':
         form_data = request.POST
         search = form_data['searchfield']
+        if search == "":
+            search = "showall"
 
         return redirect(reverse('binder:handle_search', kwargs={'search': search}))
 
