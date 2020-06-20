@@ -1,0 +1,16 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div>
+    <section>
+    <h1>All Seasons</h1>
+    {% csrf_token %}
+        {% for season in all_seasons %}
+            <div>
+                <a href="{% url 'binder:class_list' season.id %}">{{ season.name }}</a>
+            </div>
+        {% endfor %}
+</section>
+</div>
+{% endblock content %}
