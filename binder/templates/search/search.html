@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="sectionHeader">Search for a class or note</h1>
+
+    <form class="searchBar" action="{% url 'binder:search' %}" method="post">
+    {% csrf_token %}
+      <input id="searchfield" name="searchfield" type="text" placeholder="Search Your Binder">
+    </form>
+
+{% if all_classes or all_notes %}
+    <section class="listContainer">
+    <h1>Matching Classes:</h1>
+    {% for class in all_classes %}
+            <div>
+                <a href="{% url 'binder:note_list' class.id %}">{{ class.name }}</a>
+            </div>
+    {% endfor %}
+    <h1>Matching Notes:</h1>
+    {% for note in all_notes %}
+            <div>
+                <a href="{% url 'binder:home' %}">{{ note.name }}</a>
+            </div>
+    {% endfor %}
+    </section>
+{% endif %}
+
+{% endblock content %}

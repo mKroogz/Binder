@@ -18,6 +18,7 @@
             {% if user.is_authenticated %}
                 <a class="navLink" href="{% url 'binder:home' %}">Home</a>
                 <a class="navLink" href="{% url 'binder:season_list' %}">Manage Notes</a>
+                <a class="navLink" href="{% url 'binder:search' %}">Search Notes</a>
                 <a class="navLink" href="{% url 'binder:logout' %}">Log Out</a>
             {% else %}
                 <a class="navLink" href="{% url 'binder:login' %}">Log In</a>

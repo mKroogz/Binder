@@ -8,3 +8,4 @@ from .notes.existing_note import existing_note, existing_note_pt2
 from .lists.seasons import season_list
 from .lists.classes import class_list
 from .lists.notes import note_list
+from .search.search import get_search, handle_search
