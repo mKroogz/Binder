@@ -1,0 +1,16 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div>
+    <section>
+    <h1>All Notes</h1>
+    {% csrf_token %}
+        {% for note in all_notes %}
+            <div>
+                <a href="{% url 'binder:home' %}">{{ note.name }}</a>
+            </div>
+        {% endfor %}
+</section>
+</div>
+{% endblock content %}
