@@ -67,6 +67,8 @@ def build_note(note, user, sclass):
             VALUES (?, ?, ?, ?)
             """,
             (note, user, sclass, datetime.today()))
+
+            return db_cursor.lastrowid
             
 
 def new_note(request):
@@ -85,8 +87,6 @@ def new_note(request):
 
         season_id = build_season(form_data['season'], user_id)
         class_id = build_class(form_data['class'], user_id, season_id)
-        build_note(form_data['note'], user_id, class_id)
+        note_id = build_note(form_data['note'], user_id, class_id)
 
-        
-
-        return redirect(reverse('binder:success'))
+        return redirect(reverse('binder:write_note', kwargs={'note_id': note_id}))

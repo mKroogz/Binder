@@ -1,0 +1,21 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div>
+    <section>
+    <h1>{{ note.name }}</h1>
+    <form action="{% url 'binder:write_note' note.id %}" method="post">
+    <div>
+    {% csrf_token %}
+        {% if note.content %}
+            <textarea name="content" cols="200" rows="40" autofocus required>{{ note.content }}</textarea>
+        {% else %}
+            <textarea name="content" placeholder="Write out your note! :)" cols="200" rows="40" autofocus required></textarea>
+        {% endif %}
+    </div>
+      <button type="submit">Save</button>
+    </form>    
+</section>
+</div>
+{% endblock content %}

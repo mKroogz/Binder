@@ -4,7 +4,7 @@
 
 <div id="container">
     <h3>We couldn't add your note because that season already exists in your profile.</h3>
-    <h3>Add note to existing area instead?</h3>
+    <a href="{% url 'binder:existing_note' %}">Add note to existing area instead?</a>
      <form>
         <button formaction="{% url 'binder:new_note' %}">Ok</button>
     </form>
