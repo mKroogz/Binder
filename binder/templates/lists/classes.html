@@ -5,6 +5,10 @@
 <div>
     <section>
     <h1>All Classes</h1>
+    <form>
+    {% csrf_token %}
+        <button formaction="{% url 'binder:add_class' season %}">Add Class</button>
+    </form>
     {% csrf_token %}
         {% for class in all_classes %}
             <div>

@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<h1>Log new season</h1>
+<form action="{% url 'binder:add_season' %}" method="post">
+    {% csrf_token %}
+  <fieldset>
+      <label for="name">Season Name: </label>
+      <input id="name" type="text" name="name" required>
+  </fieldset>
+</form>
+{% endblock content %}

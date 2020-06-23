@@ -23,6 +23,7 @@ def class_list(request, season):
         classes = get_classes(season)
         template = 'lists/classes.html'
         context = {
-            'all_classes': classes
+            'all_classes': classes,
+            'season': season
         }
         return render(request, template, context)

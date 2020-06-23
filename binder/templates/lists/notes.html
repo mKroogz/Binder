@@ -5,6 +5,10 @@
 <div>
     <section>
     <h1>All Notes</h1>
+    <form>
+    {% csrf_token %}
+        <button formaction="{% url 'binder:add_note' school_class %}">Add Note</button>
+    </form>
     {% csrf_token %}
         {% for note in all_notes %}
             <div>

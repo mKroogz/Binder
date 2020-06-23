@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<h1>Log new note</h1>
+<form action="{% url 'binder:add_note' school_class %}" method="post">
+    {% csrf_token %}
+  <fieldset>
+      <label for="name">Note Name: </label>
+      <input id="name" type="text" name="name" required>
+  </fieldset>
+</form>
+{% endblock content %}

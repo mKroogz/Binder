@@ -11,7 +11,8 @@ def season_check(season, user):
 
         db_cursor.execute("""
             SELECT
-                s.name
+                s.name,
+                s.id
             FROM binder_season AS s 
             WHERE s.user_id = ?
         """, (user,))
@@ -20,8 +21,31 @@ def season_check(season, user):
 
         for row in dataset:
             name = row[0]
+            season_id = row[1]
             if name.upper().replace(" ", "") == season.upper().replace(" ", ""):
-                return True
+                return season_id
+        
+        return False
+
+def class_check(schoolclass, season):
+    with sqlite3.connect(Connection.db_path) as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+            SELECT
+                s.name,
+                s.id
+            FROM binder_schoolclass AS s 
+            WHERE s.season_id = ?
+        """, (season,))
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+            name = row[0]
+            class_id = row[1]
+            if name.upper().replace(" ", "") == schoolclass.upper().replace(" ", ""):
+                return class_id
         
         return False
 
@@ -81,12 +105,12 @@ def new_note(request):
         form_data = request.POST
         user_id = request.user.id
         check = season_check(form_data['season'], user_id)
-
+        check2 = False
         if check:
-            return redirect(reverse('binder:fail'))
+            check2 = class_check(form_data['class'], check)
 
-        season_id = build_season(form_data['season'], user_id)
-        class_id = build_class(form_data['class'], user_id, season_id)
+        season_id = check or build_season(form_data['season'], user_id)
+        class_id = check2 or build_class(form_data['class'], user_id, season_id)
         note_id = build_note(form_data['note'], user_id, class_id)
 
         return redirect(reverse('binder:write_note', kwargs={'note_id': note_id}))

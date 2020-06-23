@@ -23,6 +23,7 @@ def note_list(request, school_class):
         notes = get_notes(school_class)
         template = 'lists/notes.html'
         context = {
-            'all_notes': notes
+            'all_notes': notes,
+            'school_class': school_class
         }
         return render(request, template, context)
