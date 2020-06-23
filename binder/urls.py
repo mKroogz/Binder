@@ -17,6 +17,8 @@ urlpatterns = [
     path('seasons/', season_list, name='season_list'),
     path('classes/<int:season>', class_list, name='class_list'),
     path('notes/<int:school_class>', note_list, name='note_list'),
+    path('note/<int:note_id>', note_details, name='note_details'),
+    path('write/<int:note_id>', write_note, name='write_note'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_user, name='logout'),
     path('login/', include('django.contrib.auth.urls'), name='login'),

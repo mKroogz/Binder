@@ -1,0 +1,23 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div>
+    <section>
+    <h1>{{ note.name }}</h1>
+    {% if note.content %}
+        <p>{{ note.content }}</p>
+    {% endif %}
+        <form>
+            {% csrf_token %}
+            <button formaction="{% url 'binder:write_note' note.id %}">Edit</button>
+        </form>
+        <form action="{% url 'binder:write_note' note.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <input type="hidden" name="class_id" value={{note.school_class_id}}>
+            <button onclick="return confirm('Are you sure?');">Delete</button>
+        </form> 
+    </section>
+</div>
+{% endblock content %}

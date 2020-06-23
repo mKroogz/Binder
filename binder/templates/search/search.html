@@ -20,7 +20,7 @@
     <h1>Matching Notes:</h1>
     {% for note in all_notes %}
             <div>
-                <a href="{% url 'binder:home' %}">{{ note.name }}</a>
+                <a href="{% url 'binder:note_details' note.id %}">{{ note.name }}</a>
             </div>
     {% endfor %}
     </section>
