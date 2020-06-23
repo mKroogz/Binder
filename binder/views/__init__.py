@@ -10,4 +10,7 @@ from .notes.note_details import note_details
 from .lists.seasons import season_list
 from .lists.classes import class_list
 from .lists.notes import note_list
+from .manage_forms.seasons import add_season
+from .manage_forms.classes import add_class
+from .manage_forms.notes import add_note
 from .search.search import get_search, handle_search

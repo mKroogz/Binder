@@ -5,6 +5,10 @@
 <div>
     <section>
     <h1>All Seasons</h1>
+    <form>
+    {% csrf_token %}
+        <button formaction="{% url 'binder:add_season' %}">Add Season</button>
+    </form>
     {% csrf_token %}
         {% for season in all_seasons %}
             <div>
