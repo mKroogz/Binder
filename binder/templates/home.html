@@ -3,9 +3,11 @@
 {% block content %}
 
 <div id="container">
+    {% if user.is_authenticated %}
     <form>
         <button formaction="{% url 'binder:new_note' %}">Make New Note</button>
     </form>
+    {% endif %}
     <h1>Welcome to Binder</h1>
     <h3>All your notes in one place</h3>
 </div>
