@@ -2,19 +2,21 @@
 
 {% block content %}
 
-<div>
+<div id="container">
     <section>
     <h1>All Seasons</h1>
     <form>
     {% csrf_token %}
-        <button formaction="{% url 'binder:add_season' %}">Add Season</button>
+        <button class="newManageButton" formaction="{% url 'binder:add_season' %}">Add Season</button>
     </form>
+    <form>
     {% csrf_token %}
         {% for season in all_seasons %}
             <div>
-                <a href="{% url 'binder:class_list' season.id %}">{{ season.name }}</a>
+                <button class="seasonButton" formaction="{% url 'binder:class_list' season.id %}">{{ season.name }}</button>
             </div>
         {% endfor %}
+    </form>
 </section>
 </div>
 {% endblock content %}

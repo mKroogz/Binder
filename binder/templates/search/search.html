@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="sectionHeader">Search for a class or note</h1>
+    <h1 id="container">Search for a class or note</h1>
 
     <form class="searchBar" action="{% url 'binder:search' %}" method="post">
     {% csrf_token %}
-      <input id="searchfield" name="searchfield" type="text" placeholder="Search Your Binder">
+      <input id="searchfield" name="searchfield" type="text" placeholder="Search Your Binder" autofocus>
     </form>
 
 {% if all_classes or all_notes %}

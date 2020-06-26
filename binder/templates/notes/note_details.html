@@ -10,13 +10,13 @@
     {% endif %}
         <form>
             {% csrf_token %}
-            <button formaction="{% url 'binder:write_note' note.id %}">Edit</button>
+            <button class="edit" formaction="{% url 'binder:write_note' note.id %}">Edit</button>
         </form>
         <form action="{% url 'binder:write_note' note.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <input type="hidden" name="class_id" value={{note.school_class_id}}>
-            <button onclick="return confirm('Are you sure?');">Delete</button>
+            <button class="delete" onclick="return confirm('Are you sure?');">Delete</button>
         </form> 
     </section>
 </div>
