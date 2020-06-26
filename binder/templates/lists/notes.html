@@ -2,19 +2,21 @@
 
 {% block content %}
 
-<div>
+<div id="container">
     <section>
     <h1>All Notes</h1>
     <form>
     {% csrf_token %}
-        <button formaction="{% url 'binder:add_note' school_class %}">Add Note</button>
+        <button class="newManageButton" formaction="{% url 'binder:add_note' school_class %}">Add Note</button>
     </form>
+    <form>
     {% csrf_token %}
         {% for note in all_notes %}
             <div>
-                <a href="{% url 'binder:note_details' note.id %}">{{ note.name }}</a>
+                <button class="noteButton" formaction="{% url 'binder:note_details' note.id %}">{{ note.name }}</button>
             </div>
         {% endfor %}
+    </form>
 </section>
 </div>
 {% endblock content %}
